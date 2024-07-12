@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <% let title=filteredItems[0].category %>
+            <% const formatTitle=()=>{ %>
+                <% let output='' %>
+                    <% output+=title[0].toUpperCase() %>
+                        <% for(let i=1; i< title.length; i++){%>
+                            <% output+=title[i] }%>
+                                <% return output}%>
+                                    <%=formatTitle() %>
+    </title>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+        <h1>
+            <%=formatTitle()%>
+        </h1>
+        <ul>
+            <% filteredItems.forEach(item=> { %>
+                <li>
+                    <strong>
+                        <%= item.name %>
+                    </strong> $<%=item.price%>
+                </li>
+                <p>
+                    <%= item.rating %>
+                </p>
+                <p>
+                    <%= item.details %>
+                </p>
+                <% }); %>
+        </ul>
+</body>
+
+</html>

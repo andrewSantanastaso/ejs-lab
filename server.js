@@ -49,14 +49,26 @@ const RESTAURANT = {
         }
     ]
 }
-
+const restaurantMenu = RESTAURANT.menu
 app.get('/', (req, res) => {
     res.render('home.ejs', {
         RESTAURANT
     })
 })
-
-
+app.get('/menu', (req, res) => {
+    res.render('menu.ejs', {
+        restaurantMenu
+    })
+})
+app.get('/menu/:category', (req, res) => {
+    const category = req.params.category
+    const filteredItems = restaurantMenu.filter((item) => {
+        return item.category === category
+    })
+    res.render('category.ejs', {
+        filteredItems
+    })
+})
 app.listen(3000, (req, res) => {
     console.log('listening on 3000')
 })
