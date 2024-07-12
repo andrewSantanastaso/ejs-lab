@@ -24,9 +24,12 @@
         <ul>
             <% filteredItems.forEach(item=> { %>
                 <li>
-                    <strong>
-                        <%= item.name %>
-                    </strong> $<%=item.price%>
+                    <% if (item.rating===5){ %>
+                        <% item.name +=' ⭐' %>
+                            <% } %>
+                                <strong>
+                                    <%= item.name %>
+                                </strong> $<%=item.price%>
                 </li>
                 <p>
                     <%= item.rating %>
